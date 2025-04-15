@@ -64,4 +64,3 @@ def test_hash_password_internal_error(monkeypatch):
     monkeypatch.setattr("bcrypt.gensalt", mock_bcrypt_gensalt)
     with pytest.raises(ValueError):
         hash_password("test")
-
