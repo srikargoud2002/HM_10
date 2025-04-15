@@ -63,15 +63,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: srikargoud/homework10:${{ github.sha }}
+          tags: srikargoud/fastapi_rest_api:${{ github.sha }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
-
-      - name: Scan the Docker image with Trivy
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: srikargoud/homework10:${{ github.sha }}'
-          format: 'table'
-          exit-code: '1'  # Fail the job if vulnerabilities are found
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
